@@ -21,7 +21,7 @@ class responseMessageClass
 		$this->fromUserName = $toUserName;
 		$this->createTime = $createTime;
 		$this->msgType = $msgType;
-		$this->esultContent = $resultContent;
+		$this->resultContent = $resultContent;
 	}
 
 	// 关于多媒体类型的数据，需要再设计
@@ -36,7 +36,7 @@ class responseMessageClass
 										<CreateTime>%s</CreateTime>
 										<MsgType><![CDATA[text]]></MsgType>
 										<Content><![CDATA[%s]]></Content>
-										</xml>", $this->toUserName, $this->fromUserName, time(), $this->esultContent);
+										</xml>", $this->toUserName, $this->fromUserName, time(), $this->resultContent);
 				echo $responseStr;
 				break;
 			case 'image':
