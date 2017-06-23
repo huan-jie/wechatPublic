@@ -16,27 +16,27 @@ class reciveMessageClass
 
 	function __construct($postStr)
 	{
-		$this->$postStr = $postStr;
+		$this->postStr = $postStr;
 	}
 
 	/*判断消息类型*/
 	public function judgeMessageType()
 	{
 		// 解析xml数据至对象
-		$postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+		$postObj = simplexml_load_string($this->postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
 		// 根据MsgType确定消息类型
 		$msgType = trim($postObj->MsgType);
 
 		// 记录公共参数
-		$this->$toUserName = trim($postObj->ToUserName);
-		$this->$fromUserName = trim($postObj->FromUserName);
-		$this->$createTime = trim($postObj->CreateTime);
-		$this->$msgType = $msgType;
+		$this->toUserName = trim($postObj->ToUserName);
+		$this->fromUserName = trim($postObj->FromUserName);
+		$this->createTime = trim($postObj->CreateTime);
+		$this->msgType = trim($postObj->MsgType);
 
 		switch ($msgType) {
 			case 'text':
 				// 文字
-				$this->$resultContent = trim($postObj->Content);
+				$this->resultContent = trim($postObj->Content);
 				break;
 			case 'image':
 				// 图片

@@ -17,17 +17,17 @@ class responseMessageClass
 
 	function __construct($toUserName, $fromUserName, $createTime, $msgType, $resultContent)
 	{
-		$this->$toUserName = $fromUserName;
-		$this->$fromUserName = $toUserName;
-		$this->$createTime = $createTime;
-		$this->$msgType = $msgType;
-		$this->resultContent = $resultContent;
+		$this->toUserName = $fromUserName;
+		$this->fromUserName = $toUserName;
+		$this->createTime = $createTime;
+		$this->msgType = $msgType;
+		$this->esultContent = $resultContent;
 	}
 
 	// 关于多媒体类型的数据，需要再设计
 	public function responseUser()
 	{
-		switch ($this->$msgType) {
+		switch ($this->msgType) {
 			case 'text':
 				// 文字
 				$responseStr = sprintf("<xml>
@@ -36,7 +36,7 @@ class responseMessageClass
 										<CreateTime>%s</CreateTime>
 										<MsgType><![CDATA[text]]></MsgType>
 										<Content><![CDATA[%s]]></Content>
-										</xml>", $this->$toUserName, $this->$fromUserName, $this->createTime, $this->resultContent);
+										</xml>", $this->toUserName, $this->fromUserName, time(), $this->esultContent);
 				echo $responseStr;
 				break;
 			case 'image':

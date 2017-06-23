@@ -33,7 +33,7 @@ if (isset($_GET['echostr'])) {
 		$reciveMessageObj = new reciveMessageClass($postStr);
 		$reciveMessageObj->judgeMessageType();
 
-		$responseMessageObj = new reciveMessageClass($reciveMessageObj->$toUserName, $reciveMessageObj->$FromUserName, $reciveMessageObj->$createTime, $reciveMessageObj->$msgType, $reciveMessageObj->$resultContent);
+		$responseMessageObj = new reciveMessageClass($reciveMessageObj->toUserName, $reciveMessageObj->FromUserName, $reciveMessageObj->createTime, $reciveMessageObj->msgType, $reciveMessageObj->resultContent);
 		$responseMessageObj->responseUser();
 	}
 
