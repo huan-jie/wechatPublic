@@ -40,19 +40,19 @@ class reciveMessageClass
 				break;
 			case 'image':
 				// 图片
-
+				$this->resultContent = trim($postObj->MediaId);
 				break;
 			case 'voice':
 				// 语音
-
+				$this->resultContent = trim($postObj->MediaId);
 				break;
 			case 'video':
 				// 视频
-
+				$this->resultContent = trim($postObj->MediaId);
 				break;
 			case 'shortvideo':
-				// 小视频
-
+				// 小视频		
+				$this->resultContent = trim($postObj->MediaId);
 				break;
 			case 'location':
 				// 位置
@@ -60,7 +60,7 @@ class reciveMessageClass
 				break;
 			case 'link':
 				// 链接
-
+				$this->resultContent = trim($postObj->Url);
 				break;
 			case 'event':
 				// 事件
