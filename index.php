@@ -13,13 +13,9 @@ if (isset($_GET['echostr'])) {
 	
 	// 验证签名
 	$signatureObj = new signatureClass();
-	$token = TOKEN;
-	$timestamp = $_GET['timestamp'];
-	$nonce = $_GET['nonce'];
-	$signature = $_GET['signature'];
 	$echostr = $_GET['echostr'];
 	
-	if ($signatureObj->checkcheckSignature(TOKEN, $timestamp, $nonce, $signature)) {
+	if ($signatureObj->checkSignature(TOKEN, $_GET['timestamp'], $_GET['nonce'], $_GET['signature'])) {
 		
 		echo $echostr;
 		exit;
@@ -27,5 +23,5 @@ if (isset($_GET['echostr'])) {
 } else {
 
 	// 接收消息
-	
+
 }
