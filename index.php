@@ -22,6 +22,19 @@ if (isset($_GET['echostr'])) {
 	}
 } else {
 
-	// 接收消息
+	// 接收消息，微信服务器会post xml类型的数据过来
+	$postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+
+	if (!empty($postStr)) {
+
+		include("reciveMessageClass.php");
+		include("responseMessageClass.php");
+
+		$reciveMessageObj = new reciveMessageClass($postStr);
+		$reciveMessageObj->judgeMessageType();
+
+		$responseMessageObj = new reciveMessageClass($reciveMessageObj->$toUserName, $reciveMessageObj->$FromUserName, $reciveMessageObj->$createTime, $reciveMessageObj->$msgType, $reciveMessageObj->$resultContent);
+		$responseMessageObj->responseUser();
+	}
 
 }
