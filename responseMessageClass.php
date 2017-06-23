@@ -29,11 +29,12 @@ class responseMessageClass
 		switch ($this->msgType) {
 			case 'text':
 				// 文字
-				$responseStr = $this->responseStr($this->resultContent);
+				$responseStr = $this->responseText($this->resultContent);
 				echo $responseStr;
 				break;
 			case 'image':
 				// 图片
+				echo "{'a':'n'}";
 				$responseStr = $this->responseImage($this->resultContent);
 				echo $responseStr;
 				break;
