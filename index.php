@@ -100,9 +100,12 @@ if (isset($_GET['echostr'])) {
 				}
 				break;
 			default:
-				echo "{'error':'error type.'}"
+				echo "{'error':'error type'}"
 				break;
 		}
+	} else {
+
+		echo "empty data";
 	}
 
 }
