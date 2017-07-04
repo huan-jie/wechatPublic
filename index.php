@@ -40,9 +40,58 @@ if (isset($_GET['echostr'])) {
 		switch ($reciveMessageObj->msgType) {
 			case 'text':
 				// 文字
-				$responseMessageObj->responseText('hello world');
+				$responseMessageObj->responseText($reciveMessageObj->content);
 				break;
-			
+			case 'image':
+				// 图片
+				break;
+			case 'voice':
+				// 语音
+				break;
+			case 'video':
+				// 视频
+				break;
+			case 'shortvideo':
+				// 小视频		
+				break;
+			case 'location':
+				// 位置
+				break;
+			case 'link':
+				// 链接
+				break;
+			case 'event':
+				// 事件
+				switch ($event) {
+					case 'subscribe':
+						// 关注
+
+						break;
+					case 'unsubscribe':
+						// 取消关注
+					
+						break;
+					case 'SCAN':
+						// 扫描
+					
+						break;
+					case 'LOCATION':
+						// 上报地理位置
+					
+						break;
+					case 'CLICK':
+						// 点击菜单拉取消息
+					
+						break;
+					case 'VIEW':
+						// 点击菜单跳转链接
+					
+						break;
+					default:
+						# code...
+						break;
+				}
+				break;
 			default:
 				break;
 		}
