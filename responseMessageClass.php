@@ -65,7 +65,7 @@ class responseMessageClass
 		return;
 	}
 
-	public function responseVideo($videoMediaId, $videoTitle='no title', $videoDescription='no description')
+	public function responseVideo($videoMediaId, $videoTitle, $videoDescription)
 	{
 		$responseStr = sprintf("<xml>
 								<ToUserName><![CDATA[%s]]></ToUserName>
