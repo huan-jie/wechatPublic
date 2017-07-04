@@ -94,7 +94,7 @@ if (isset($_GET['echostr'])) {
 				break;
 			case 'event':
 				// 事件
-				switch ($event) {
+				switch ($reciveMessageObj->event) {
 					case 'subscribe':
 						// 关注
 						$responseMessageObj->responseText('欢迎关注什么什么的');
