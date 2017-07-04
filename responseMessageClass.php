@@ -62,7 +62,7 @@ class responseMessageClass
 		}
 	}
 
-	private responseText($textContent)
+	public responseText($textContent)
 	{
 		$responseStr = sprintf("<xml>
 								<ToUserName><![CDATA[%s]]></ToUserName>
@@ -71,10 +71,11 @@ class responseMessageClass
 								<MsgType><![CDATA[text]]></MsgType>
 								<Content><![CDATA[%s]]></Content>
 								</xml>", $this->toUserName, $this->fromUserName, time(), $textContent);
-		return $responseStr;
+		echo $responseStr;
+		return;
 	}
 
-	private responseImage($imageMediaId)
+	public responseImage($imageMediaId)
 	{
 		$responseStr = sprintf("<xml>
 								<ToUserName><![CDATA[%s]]></ToUserName>
@@ -85,10 +86,11 @@ class responseMessageClass
 								<MediaId><![CDATA[%s]]></MediaId>
 								</Image>
 								</xml>", $this->toUserName, $this->fromUserName, time(), $imageMediaId);
-		return $responseStr;
+		echo $responseStr;
+		return;
 	}
 
-	private responseVoice($voiceMediaId)
+	public responseVoice($voiceMediaId)
 	{
 		$responseStr = sprintf("<xml>
 								<ToUserName><![CDATA[%s]]></ToUserName>
@@ -99,10 +101,11 @@ class responseMessageClass
 								<MediaId><![CDATA[%s]]></MediaId>
 								</Voice>
 								</xml>", $this->toUserName, $this->fromUserName, time(), $voiceMediaId);
-		return $responseStr;
+		echo $responseStr;
+		return;
 	}
 
-	private responseVideo($videoMediaId, $videoTitle='', $videoDescription='')
+	public responseVideo($videoMediaId, $videoTitle='', $videoDescription='')
 	{
 		$responseStr = sprintf("<xml>
 								<ToUserName><![CDATA[%s]]></ToUserName>
@@ -115,15 +118,16 @@ class responseMessageClass
 								<Description><![CDATA[%s]]></Description>
 								</Video> 
 								</xml>", $this->toUserName, $this->fromUserName, time(), $videoMediaId, $videoTitle, $videoDescription);
-		return $responseStr;
+		echo $responseStr;
+		return;
 	}
 
-	private responseMusic()
+	public responseMusic()
 	{
 
 	}
 
-	private responseNews()
+	public responseNews()
 	{
 
 	}
