@@ -40,25 +40,55 @@ if (isset($_GET['echostr'])) {
 		switch ($reciveMessageObj->msgType) {
 			case 'text':
 				// 文字
-				$responseMessageObj->responseText($reciveMessageObj->content);
+				$content = $reciveMessageObj->content;		// 文字内容，可自定义处理。如根据内容回复不同消息
+
+				$responseMessageObj->responseText($content);
 				break;
 			case 'image':
 				// 图片
+				$mediaId = $reciveMessageObj->mediaId;
+				$picUrl = $reciveMessageObj->picUrl;
+
+				$responseMessageObj->responseImage($mediaId);
 				break;
 			case 'voice':
 				// 语音
+				$mediaId = $reciveMessageObj->mediaId;
+				$format = $reciveMessageObj->format;
+				$recognition = $reciveMessageObj->recognition;
+
+				$responseMessageObj->responseVoice($mediaId);
 				break;
 			case 'video':
 				// 视频
+				$mediaId = $reciveMessageObj->mediaId;
+				$thumbMediaId = $reciveMessageObj->thumbMediaId;
+
+				$responseMessageObj->responseVideo($mediaId);
 				break;
 			case 'shortvideo':
-				// 小视频		
+				// 小视频	
+				$mediaId = $reciveMessageObj->mediaId;
+				$thumbMediaId = $reciveMessageObj->thumbMediaId;
+
+				$responseMessageObj->responseVideo($mediaId);	
 				break;
 			case 'location':
 				// 位置
+				$locationX = $reciveMessageObj->locationX;
+				$locationY = $reciveMessageObj->locationY;
+				$scale = $reciveMessageObj->scale;
+				$label = $reciveMessageObj->label;
+
+				$responseMessageObj->responseText(sprintf("纬度：%s；经度：%s；地图缩放：%s；地理位置信息：%s。", $locationX, $locationY, $scale, $label));
 				break;
 			case 'link':
 				// 链接
+				$title = $reciveMessageObj->title;
+				$description = $reciveMessageObj->description;
+				$url = $reciveMessageObj->url;
+
+				$responseMessageObj->responseText(sprintf("标题：%s；详情描述：%s；URL：%s。", $title, $description, $url));
 				break;
 			case 'event':
 				// 事件

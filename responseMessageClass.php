@@ -22,45 +22,6 @@ class responseMessageClass
 		$this->resultContent = $resultContent;
 	}
 
-	// 关于多媒体类型的数据，需要再设计
-	// public function responseUser()
-	// {
-	// 	// 根据用户发送的消息，向用户回复不同的内容
-	// 	switch ($this->msgType) {
-	// 		case 'text':
-	// 			// 文字
-	// 			$responseStr = $this->responseText($this->resultContent);
-	// 			echo $responseStr;
-	// 			break;
-	// 		case 'image':
-	// 			// 图片
-	// 			$responseStr = $this->responseImage($this->resultContent);
-	// 			echo $responseStr;
-	// 			break;
-	// 		case 'voice':
-	// 			// 语音
-	// 			$responseStr = $this->responseVoice($this->resultContent);
-	// 			echo $responseStr;
-	// 			break;
-	// 		case 'video':
-	// 			// 视频
-	// 			$responseStr = $this->responseVideo($this->resultContent);
-	// 			echo $responseStr;
-	// 			break;
-	// 		case 'music':
-	// 			// 音乐
-
-	// 			break;
-	// 		case 'news':
-	// 			// 图文
-
-	// 			break;
-	// 		default:
-				
-	// 			break;
-	// 	}
-	// }
-
 	public function responseText($textContent)
 	{
 		$responseStr = sprintf("<xml>
@@ -121,11 +82,26 @@ class responseMessageClass
 		return;
 	}
 
-	public function responseMusic()
+	public function responseMusic($musicMediaId, $musicTitle, $musicDescription, $musicUrl, $HDMusicUrl)
 	{
-
+		$responseStr = sprintf("<xml>
+								<ToUserName><![CDATA[%s]]></ToUserName>
+								<FromUserName><![CDATA[%s]]></FromUserName>
+								<CreateTime>%s</CreateTime>
+								<MsgType><![CDATA[music]]></MsgType>
+								<Music>
+								<Title><![CDATA[%s]]></Title>
+								<Description><![CDATA[%s]]></Description>
+								<MusicUrl><![CDATA[%s]]></MusicUrl>
+								<HQMusicUrl><![CDATA[%s]]></HQMusicUrl>
+								<ThumbMediaId><![CDATA[%s]]></ThumbMediaId>
+								</Music>
+								</xml>", $this->toUserName, $this->fromUserName, time(), $musicTitle, $musicDescription, $musicUrl, $HDMusicUrl, $musicMediaId);
+		echo $responseStr;
+		return;
 	}
 
+	// 有点麻烦，后面再好好设计
 	public function responseNews()
 	{
 
