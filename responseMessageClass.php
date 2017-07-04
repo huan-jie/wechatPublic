@@ -23,48 +23,46 @@ class responseMessageClass
 	}
 
 	// 关于多媒体类型的数据，需要再设计
-	public function responseUser()
-	{
-		// 根据用户发送的消息，向用户回复不同的内容
-		switch ($this->msgType) {
-			case 'text':
-				// 文字
-				$responseStr = $this->responseText($this->resultContent);
-				echo $responseStr;
-				break;
-			case 'image':
-				// 图片
-				echo "{'a':'n'}";
-				$responseStr = $this->responseImage($this->resultContent);
-				echo $responseStr;
-				break;
-			case 'voice':
-				// 语音
-				$responseStr = $this->responseVoice($this->resultContent);
-				echo $responseStr;
-				break;
-			case 'video':
-				// 视频
-				$responseStr = $this->responseVideo($this->resultContent);
-				echo $responseStr;
-				break;
-			case 'music':
-				// 音乐
+	// public function responseUser()
+	// {
+	// 	// 根据用户发送的消息，向用户回复不同的内容
+	// 	switch ($this->msgType) {
+	// 		case 'text':
+	// 			// 文字
+	// 			$responseStr = $this->responseText($this->resultContent);
+	// 			echo $responseStr;
+	// 			break;
+	// 		case 'image':
+	// 			// 图片
+	// 			$responseStr = $this->responseImage($this->resultContent);
+	// 			echo $responseStr;
+	// 			break;
+	// 		case 'voice':
+	// 			// 语音
+	// 			$responseStr = $this->responseVoice($this->resultContent);
+	// 			echo $responseStr;
+	// 			break;
+	// 		case 'video':
+	// 			// 视频
+	// 			$responseStr = $this->responseVideo($this->resultContent);
+	// 			echo $responseStr;
+	// 			break;
+	// 		case 'music':
+	// 			// 音乐
 
-				break;
-			case 'news':
-				// 图文
+	// 			break;
+	// 		case 'news':
+	// 			// 图文
 
-				break;
-			default:
+	// 			break;
+	// 		default:
 				
-				break;
-		}
-	}
+	// 			break;
+	// 	}
+	// }
 
-	public responseText($textContent)
+	public function responseText($textContent)
 	{
-		echo "{'a':'b'}";
 		$responseStr = sprintf("<xml>
 								<ToUserName><![CDATA[%s]]></ToUserName>
 								<FromUserName><![CDATA[%s]]></FromUserName>
@@ -76,7 +74,7 @@ class responseMessageClass
 		return;
 	}
 
-	public responseImage($imageMediaId)
+	public function responseImage($imageMediaId)
 	{
 		$responseStr = sprintf("<xml>
 								<ToUserName><![CDATA[%s]]></ToUserName>
@@ -91,7 +89,7 @@ class responseMessageClass
 		return;
 	}
 
-	public responseVoice($voiceMediaId)
+	public function responseVoice($voiceMediaId)
 	{
 		$responseStr = sprintf("<xml>
 								<ToUserName><![CDATA[%s]]></ToUserName>
@@ -106,7 +104,7 @@ class responseMessageClass
 		return;
 	}
 
-	public responseVideo($videoMediaId, $videoTitle='', $videoDescription='')
+	public function responseVideo($videoMediaId, $videoTitle='', $videoDescription='')
 	{
 		$responseStr = sprintf("<xml>
 								<ToUserName><![CDATA[%s]]></ToUserName>
@@ -123,12 +121,12 @@ class responseMessageClass
 		return;
 	}
 
-	public responseMusic()
+	public function responseMusic()
 	{
 
 	}
 
-	public responseNews()
+	public function responseNews()
 	{
 
 	}
