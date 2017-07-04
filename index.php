@@ -64,16 +64,16 @@ if (isset($_GET['echostr'])) {
 				$mediaId = $reciveMessageObj->mediaId;
 				$thumbMediaId = $reciveMessageObj->thumbMediaId;
 
-				$responseMessageObj->responseText(sprintf('mediaId:%s, thumbMediaId:%s', $mediaId, $thumbMediaId));
-				// $responseMessageObj->responseVideo($mediaId);
+				// $responseMessageObj->responseText(sprintf('mediaId:%s, thumbMediaId:%s', $mediaId, $thumbMediaId));
+				$responseMessageObj->responseVideo($mediaId, 'title', 'description');
 				break;
 			case 'shortvideo':
 				// 小视频	
 				$mediaId = $reciveMessageObj->mediaId;
 				$thumbMediaId = $reciveMessageObj->thumbMediaId;
 
-				$responseMessageObj->responseText(sprintf('mediaId:%s, thumbMediaId:%s', $mediaId, $thumbMediaId));
-				// $responseMessageObj->responseVideo($mediaId);	
+				// $responseMessageObj->responseText(sprintf('mediaId:%s, thumbMediaId:%s', $mediaId, $thumbMediaId));
+				$responseMessageObj->responseVideo($mediaId, 'title', 'description');	
 				break;
 			case 'location':
 				// 位置
