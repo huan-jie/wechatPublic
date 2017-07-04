@@ -4,9 +4,9 @@
   * 微信公众号
   */
 
-require("signatureClass.php");
-require("reciveMessageClass.php");
-require("responseMessageClass.php");
+require("./signatureClass.php");
+require("./reciveMessageClass.php");
+require("./responseMessageClass.php");
 
 // define custom token
 define("TOKEN", "nahuanjie");
