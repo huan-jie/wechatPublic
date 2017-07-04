@@ -117,7 +117,6 @@ class reciveMessageClass
 				switch ($event) {
 					case 'subscribe':
 						// 关注
-						echo "{'err':'no'}";
 						// 扫描带参二维码关注时可得到以下信息
 						$this->eventKey = trim($postObj->EventKey);
 						$this->ticket = trim($postObj->Ticket);
