@@ -39,7 +39,38 @@ if (isset($_GET['echostr'])) {
 
 		// 对不同的事件做自定义处理
 		switch ($reciveMessageObj->msgType) {
-			
+			case 'text':
+				// 文字
+				$responseMessageObj->responseText('hello world');
+				break;
+			case 'image':
+				// 图片
+				
+				break;
+			case 'voice':
+				// 语音
+				
+				break;
+			case 'video':
+				// 视频
+				
+				break;
+			case 'shortvideo':
+				// 小视频		
+				
+				break;
+			case 'location':
+				// 位置
+
+				break;
+			case 'link':
+				// 链接
+				
+				break;
+
+			default:
+				echo "{'error':'error type'}"
+				break;
 		}
 	} else {
 
