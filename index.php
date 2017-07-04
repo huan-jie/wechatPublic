@@ -35,9 +35,12 @@ if (isset($_GET['echostr'])) {
 		$reciveMessageObj->judgeMessageType();
 
 		// 实例回复用户消息类
-		$responseMessageClassgeObj = new responseMessageClass($reciveMessageObj->toUserName, $reciveMessageObj->fromUserName, $reciveMessageObj->msgType, $reciveMessageObj->resultContent);
+		$responseMessageObj = new responseMessageClass($reciveMessageObj->toUserName, $reciveMessageObj->fromUserName, $reciveMessageObj->msgType, $reciveMessageObj->resultContent);
 
-		
+		// 对不同的事件做自定义处理
+		switch ($reciveMessageObj->msgType) {
+			
+		}
 	} else {
 
 		echo "empty data";
