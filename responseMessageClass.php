@@ -64,6 +64,7 @@ class responseMessageClass
 
 	public responseText($textContent)
 	{
+		echo "{'a':'b'}";
 		$responseStr = sprintf("<xml>
 								<ToUserName><![CDATA[%s]]></ToUserName>
 								<FromUserName><![CDATA[%s]]></FromUserName>
