@@ -97,7 +97,7 @@ if (isset($_GET['echostr'])) {
 				switch ($event) {
 					case 'subscribe':
 						// 关注
-
+						$responseMessageObj->responseText('欢迎关注什么什么的');
 						break;
 					case 'unsubscribe':
 						// 取消关注
@@ -109,7 +109,10 @@ if (isset($_GET['echostr'])) {
 						break;
 					case 'LOCATION':
 						// 上报地理位置
-					
+						$latitude = $reciveMessageObj->latitude;
+						$longitude = $reciveMessageObj->longitude;
+						$precision = $reciveMessageObj->precision;
+						$responseMessageObj->responseText(sprintf("经度：%s；纬度：%s；精度：%s。", $latitude, $longitude, $precision));
 						break;
 					case 'CLICK':
 						// 点击菜单拉取消息

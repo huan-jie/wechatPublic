@@ -23,7 +23,13 @@ class reciveMessageClass
 	 * 小视频消息：MediaId、ThumbMediaId
 	 * 地理位置消息：Location_X（纬度）、Location_Y（经度）、Scale（缩放大小）、Label（地理位置信息）
 	 * 链接消息：Title（消息标题）、Description（消息描述）、Url（消息链接）
-	 * 事件推送：Event(事件类型)
+	 * 事件推送：
+	 * 关注取消关注事件：Event(事件类型，subscribe、unsubscribe)
+	 * 扫描带参二维码事件：1.未关注：Event（subscribe）、EventKey（qrscene_为前缀，后面为二维码的参数值）、Ticket（二维码的ticket，可用来换取二维码图片）
+	 				    2.已关注：Event（SCAN）、EventKey（二维码id）、Ticket
+	 * 上报地理位置事件：用户同意上报地理位置后，每次进入公众号或一段时间内上报一次地理位置，可设置。Event（LOCATION）、Latitude、Longitude、Precision（精度）
+	 * 自定义菜单事件：1.点击菜单拉取消息时：Event（CLICK）、EventKey（事件KEY值，接口菜单中KEY值相对应）
+	 	             2.点击菜单跳转链接时：Event（VIEW）、EventKey（事件KEY值，设置的跳转URL）
 	 */
 	public $content;		
 	public $picUrl;			
@@ -38,6 +44,12 @@ class reciveMessageClass
 	public $title;
 	public $description;
 	public $url;
+	public $event;
+	public $eventKey;
+	public $ticket;
+	public $latitude;
+	public $longitude;
+	public $precision;
 
 	function __construct($postStr)
 	{
@@ -101,10 +113,13 @@ class reciveMessageClass
 			case 'event':
 				// 事件
 				$event = trim($postObj->Event);
+				$this->event = $event;
 				switch ($event) {
 					case 'subscribe':
 						// 关注
-
+						// 扫描带参二维码关注时可得到以下信息
+						$this->eventKey = trim($postObj->EventKey);
+						$this->ticket = trim($postObj->Ticket);
 						break;
 					case 'unsubscribe':
 						// 取消关注
@@ -112,19 +127,22 @@ class reciveMessageClass
 						break;
 					case 'SCAN':
 						// 扫描
-					
+						$this->eventKey = trim($postObj->EventKey);
+						$this->ticket = trim($postObj->Ticket);
 						break;
 					case 'LOCATION':
 						// 上报地理位置
-					
+						$this->latitude = trim($postStr->Latitude);
+						$this->longitude = trim($postStr->Longitude);
+						$this->precision = trim($postStr->Precision);
 						break;
 					case 'CLICK':
 						// 点击菜单拉取消息
-					
+						$this->eventKey = trim($postObj->EventKey);
 						break;
 					case 'VIEW':
 						// 点击菜单跳转链接
-					
+						$this->eventKey = trim($postObj->EventKey);
 						break;
 					default:
 						# code...
