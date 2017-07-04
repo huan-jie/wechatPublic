@@ -8,8 +8,9 @@ require("signatureClass.php");
 require("reciveMessageClass.php");
 require("responseMessageClass.php");
 
+echo "hello world";
 // define custom token
-define("TOKEN", "nahuanjie");
+// define("TOKEN", "nahuanjie");
 
 // if (isset($_GET['echostr'])) {
 	
