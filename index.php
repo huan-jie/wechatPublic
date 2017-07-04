@@ -5,6 +5,8 @@
   */
 
 require("signatureClass.php");
+require("reciveMessageClass.php");
+require("responseMessageClass.php");
 
 // define custom token
 define("TOKEN", "nahuanjie");
@@ -26,9 +28,6 @@ if (isset($_GET['echostr'])) {
 	$postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
 
 	if (!empty($postStr)) {
-
-		include("reciveMessageClass.php");
-		include("responseMessageClass.php");
 
 		// 解析用户发送的内容
 		$reciveMessageObj = new reciveMessageClass($postStr);
