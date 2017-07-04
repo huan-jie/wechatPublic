@@ -39,7 +39,13 @@ if (isset($_GET['echostr'])) {
 
 		// 对不同的事件做自定义处理
 		switch ($reciveMessageObj->msgType) {
+			case 'text':
+				// 文字
+				$responseMessageObj->responseText('hello world');
+				break;
 			
+			default:
+				break;
 		}
 	} else {
 
